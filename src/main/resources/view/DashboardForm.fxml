@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="dashboardPage" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.gdse72.shaanfashion.controller.DashboardController">
+   <children>
+      <Pane layoutX="370.0" layoutY="222.0" prefHeight="110.0" prefWidth="1920.0" style="-fx-background-color: #050A30;" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Label fx:id="lblDateTime" layoutX="1575.0" layoutY="28.0" prefHeight="48.0" prefWidth="283.0" textFill="WHITE">
+               <font>
+                  <Font name="Broadway" size="24.0" />
+               </font></Label>
+         </children>
+      </Pane>
+      <Pane layoutX="168.0" layoutY="396.0" prefHeight="1080.0" prefWidth="200.0" style="-fx-background-color: #050A30;" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <VBox layoutX="-15.0" layoutY="118.0" prefHeight="533.0" prefWidth="202.0" spacing="40.0">
+               <children>
+                  <JFXButton fx:id="btnCustomer" buttonType="RAISED" onAction="#btnCustomerOnAction" prefHeight="40.0" prefWidth="170.0" style="-fx-background-color: EC8305; -fx-background-radius: 30; -fx-border-radius: 30;" text="Customer">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </JFXButton>
+                  <JFXButton fx:id="btnItem" buttonType="RAISED" layoutX="10.0" layoutY="10.0" onAction="#NavigateTOItemPage" prefHeight="40.0" prefWidth="170.0" style="-fx-background-color: EC8305; -fx-border-radius: 30; -fx-background-radius: 30;" text="Item">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </JFXButton>
+                  <JFXButton fx:id="btnOrder" buttonType="RAISED" layoutX="10.0" layoutY="35.0" onAction="#NavigateToOrderPage" prefHeight="40.0" prefWidth="170.0" style="-fx-background-color: EC8305; -fx-background-radius: 30; -fx-border-radius: 30;" text="Order">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </JFXButton>
+                  <JFXButton fx:id="btnBrand" buttonType="RAISED" layoutX="10.0" layoutY="60.0" onAction="#NavigateToBrandPage" prefHeight="40.0" prefWidth="170.0" style="-fx-background-color: EC8305; -fx-background-radius: 30; -fx-border-radius: 30;" text="Brand">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </JFXButton>
+                  <JFXButton fx:id="btnCategory" buttonType="RAISED" layoutX="10.0" layoutY="85.0" onAction="#NavigateToCategory" prefHeight="40.0" prefWidth="170.0" style="-fx-background-color: EC8305; -fx-background-radius: 30; -fx-border-radius: 30;" text="Category">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </JFXButton>
+                  <JFXButton fx:id="btnOrderReturn" buttonType="RAISED" layoutX="10.0" layoutY="110.0" onAction="#NavigateToOrderReturnPage" prefHeight="40.0" prefWidth="170.0" style="-fx-background-color: EC8305; -fx-background-radius: 30; -fx-border-radius: 30;" text="Order Returns">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </JFXButton>
+                  <JFXButton fx:id="btnSupplier" buttonType="RAISED" layoutX="10.0" layoutY="405.0" onAction="#NavigateToSupplierPage" prefHeight="40.0" prefWidth="170.0" style="-fx-background-color: EC8305; -fx-background-radius: 30; -fx-border-radius: 30;" text="Supplier">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </JFXButton>
+               </children>
+            </VBox>
+            <JFXButton fx:id="btnLogOut" buttonType="RAISED" layoutX="15.0" layoutY="1000.0" onAction="#btnLogOutOnAcion" prefHeight="40.0" prefWidth="170.0" style="-fx-background-color: #ff6600;" text="Log Out" />
+         </children>
+      </Pane>
+      <AnchorPane fx:id="dashBoardLoadingTablePage" layoutX="786.0" layoutY="426.0" prefHeight="970.0" prefWidth="1720.0" style="-fx-background-color: #ffffff;" AnchorPane.leftAnchor="200.0" AnchorPane.topAnchor="110.0">
+         <children>
+            <ImageView fitHeight="970.0" fitWidth="970.0" layoutX="1068.0" layoutY="470.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <image>
+                  <Image url="@../image/image%20shaan%20fashion%20logo.jpg" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

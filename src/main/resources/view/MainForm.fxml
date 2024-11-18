@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="mainPage" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onDragDetected="#mainPageOnAction" prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.gdse72.shaanfashion.controller.MainController">
+   <children>
+      <Pane layoutX="1014.0" layoutY="82.0" prefHeight="1080.0" prefWidth="700.0" style="-fx-background-color: #050A30;" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Label layoutX="172.0" layoutY="91.0" text="Select your job rol" textFill="WHITE">
+               <font>
+                  <Font name="Bodoni MT Bold" size="48.0" />
+               </font>
+            </Label>
+            <Button fx:id="btnOwner" layoutX="76.0" layoutY="422.0" mnemonicParsing="false" onAction="#btnOwnerOnAction" prefHeight="70.0" prefWidth="130.0" text="Owner">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
+            <Button fx:id="btnManager" layoutX="285.0" layoutY="422.0" mnemonicParsing="false" onAction="#btnManagerOnAction" prefHeight="70.0" prefWidth="130.0" text="Manager">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
+            <Button fx:id="btnChashier" layoutX="494.0" layoutY="422.0" mnemonicParsing="false" onAction="#btnChashierOnAction" prefHeight="70.0" prefWidth="130.0" text="Chashier">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
+            <Pane layoutX="66.0" layoutY="263.0" prefHeight="150.0" prefWidth="150.0" style="-fx-background-color: white; -fx-border-radius: 90; -fx-background-radius: 90;">
+               <children>
+                  <ImageView fitHeight="120.0" fitWidth="120.0" layoutX="22.0" layoutY="10.0">
+                     <image>
+                        <Image url="@../icon/real-estate-agent_3084987.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </Pane>
+            <Pane layoutX="275.0" layoutY="263.0" prefHeight="150.0" prefWidth="150.0" style="-fx-background-color: white; -fx-border-radius: 90; -fx-background-radius: 90;">
+               <children>
+                  <ImageView fitHeight="130.0" fitWidth="130.0" layoutX="20.0" layoutY="10.0">
+                     <image>
+                        <Image url="@../icon/manager_14353808.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </Pane>
+            <Pane layoutX="484.0" layoutY="263.0" prefHeight="150.0" prefWidth="150.0" style="-fx-background-color: white; -fx-border-radius: 90; -fx-background-radius: 90;">
+               <children>
+                  <ImageView fitHeight="110.0" fitWidth="110.0" layoutX="24.0" layoutY="20.0">
+                     <image>
+                        <Image url="@../icon/cashier_16779336.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </Pane>
+         </children>
+      </Pane>
+      <ImageView fitHeight="1080.0" fitWidth="1220.0" layoutX="301.0" layoutY="345.0" AnchorPane.leftAnchor="-5.0" AnchorPane.topAnchor="0.0">
+         <image>
+            <Image url="@../image/Untitled%20Project(2).jpg" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>

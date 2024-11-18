@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane prefHeight="970.0" prefWidth="1720.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.gdse72.shaanfashion.controller.BrandController">
+   <children>
+      <VBox layoutX="72.0" layoutY="142.0" prefHeight="179.0" prefWidth="1620.0">
+         <children>
+            <HBox prefHeight="50.0" prefWidth="200.0" spacing="110.0">
+               <children>
+                  <Label text="Brand ID">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="lblBrandId" prefHeight="44.0" prefWidth="100.0">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+            <HBox prefHeight="50.0" prefWidth="200.0" spacing="100.0">
+               <children>
+                  <Label text="Brand Name">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Label>
+                  <JFXTextField fx:id="txtBrandName" prefHeight="39.0" prefWidth="1220.0" promptText="ex: MOOS">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </JFXTextField>
+               </children>
+            </HBox>
+            <HBox prefHeight="50.0" prefWidth="200.0" spacing="110.0">
+               <children>
+                  <Label text="Description">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Label>
+                  <JFXTextField fx:id="txtDescription" prefHeight="39.0" prefWidth="1220.0" promptText="text">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </JFXTextField>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+      <Label layoutX="574.0" layoutY="30.0" prefHeight="83.0" prefWidth="260.0" text="BRAND" textFill="#cf1919" underline="true" AnchorPane.leftAnchor="600.0" AnchorPane.topAnchor="25.0">
+         <font>
+            <Font name="Bodoni MT Bold" size="48.0" />
+         </font>
+      </Label>
+      <HBox layoutX="35.0" layoutY="332.0" prefHeight="50.0" prefWidth="700.0" spacing="140.0" AnchorPane.leftAnchor="25.0" AnchorPane.rightAnchor="25.0">
+         <children>
+            <JFXButton fx:id="btnResert" buttonType="RAISED" onAction="#btnResertOnAction" prefHeight="40.0" prefWidth="300.0" style="-fx-background-color: #00ffff; -fx-border-color: black; -fx-background-radius: 10; -fx-border-radius: 10;" text="Resert">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </JFXButton>
+            <JFXButton fx:id="btnDelete" buttonType="RAISED" layoutX="10.0" layoutY="10.0" onAction="#btnDeleteOnAction" prefHeight="40.0" prefWidth="300.0" style="-fx-background-color: #ff0000; -fx-background-radius: 10; -fx-border-radius: 10; -fx-border-color: black;" text="Delete">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </JFXButton>
+            <JFXButton fx:id="btnUpdate" buttonType="RAISED" layoutX="162.0" layoutY="10.0" onAction="#btnUpdateOnAction" prefHeight="40.0" prefWidth="300.0" style="-fx-background-color: #ffff00; -fx-background-radius: 10; -fx-border-radius: 10; -fx-border-color: black;" text="Update">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </JFXButton>
+            <JFXButton fx:id="btnSave" buttonType="RAISED" layoutX="314.0" layoutY="10.0" onAction="#btnSaveOnAction" prefHeight="40.0" prefWidth="300.0" style="-fx-background-color: #00ff00; -fx-border-radius: 10; -fx-background-radius: 10; -fx-border-color: black;" text="Save">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </JFXButton>
+         </children>
+      </HBox>
+      <JFXButton fx:id="btnBrandReport" buttonType="RAISED" layoutX="262.0" layoutY="407.0" onAction="#btnBrandReportOnAcrion" prefHeight="40.0" prefWidth="300.0" style="-fx-background-color: #b3b3ff; -fx-background-radius: 10; -fx-border-radius: 10; -fx-border-color: black;" text="Brand Report">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </JFXButton>
+      <TableView fx:id="tblBrand" layoutX="335.0" layoutY="733.0" onMouseClicked="#onClickTable" prefHeight="416.0" prefWidth="1670.0" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="25.0" AnchorPane.rightAnchor="25.0" AnchorPane.topAnchor="529.0">
+         <columns>
+            <TableColumn fx:id="colBrandId" prefWidth="137.66666412353516" text="Brand ID" />
+            <TableColumn fx:id="colBrandName" prefWidth="527.3333358764648" text="Brand Name" />
+            <TableColumn fx:id="colDescprition" prefWidth="1004.3333282470703" text="Description" />
+         </columns>
+      </TableView>
+      <Line endX="1523.5" layoutX="191.0" layoutY="512.0" startX="-146.0" AnchorPane.leftAnchor="25.0" AnchorPane.rightAnchor="25.0" />
+      <Label fx:id="lblNotify" layoutX="43.0" layoutY="477.0" prefHeight="33.0" prefWidth="280.0" AnchorPane.leftAnchor="25.0" />
+   </children>
+</AnchorPane>
