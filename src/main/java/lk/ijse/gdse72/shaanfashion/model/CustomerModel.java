@@ -51,12 +51,17 @@ public class CustomerModel {
 
     public boolean updateCustomer(CustomerDTO customerDTO) throws SQLException {
         String sql = "UPDATE Customer SET userId = ?, customerName = ?, customerAddress = ?, customerEmail = ? WHERE customerId = ?";
-        return CrudUtil.execute(sql, customerDTO.getUserId(), customerDTO.getCustomerName(), customerDTO.getCustomerAddress(), customerDTO.getCustomerEmail(), customerDTO.getCustomerId());
+        return CrudUtil.execute(sql,
+                customerDTO.getUserId(),
+                customerDTO.getCustomerName(),
+                customerDTO.getCustomerAddress(),
+                customerDTO.getCustomerEmail(),
+                customerDTO.getCustomerId()
+        );
     }
 
     public boolean deleteCustomer(String customerId) throws SQLException {
-        String sql = "DELETE FROM Customer WHERE customerId = ?";
-        return CrudUtil.execute(sql, customerId);
+        return CrudUtil.execute("delete from customer where customerId=?", customerId);
     }
 
     public ArrayList<String> getAllCustomerIds() throws SQLException {
