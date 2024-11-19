@@ -153,8 +153,8 @@ public class ItemController implements Initializable {
     private void refreshPage() throws SQLException {
         refreshTable();
 
-        String nextCustomerID = itemModel.getNextItemId();
-        lblBrandId.setText(nextCustomerID);
+        String nextItemID = itemModel.getNextItemId();
+        lblItemId.setText(nextItemID);
 
         txtItemName.setText("");
 
@@ -239,7 +239,7 @@ public class ItemController implements Initializable {
 
     @FXML
     void btnSaveOnAction(ActionEvent event) throws IOException {
-        String itemId = lblBrandId.getText();
+        String itemId = lblItemId.getText();
         String itemName = txtItemName.getText();
         String categoryId = comCategoryId.getSelectionModel().getSelectedItem();
         String brandId = comBrandId.getSelectionModel().getSelectedItem();
@@ -299,7 +299,7 @@ public class ItemController implements Initializable {
     }
     @FXML
     void btnUpdateOnAction(ActionEvent event) {
-        String itemId = lblBrandId.getText();
+        String itemId = lblItemId.getText();
         String itemName = txtItemName.getText();
         String categoryId = comCategoryId.getSelectionModel().getSelectedItem();
         String brandId = comBrandId.getSelectionModel().getSelectedItem();

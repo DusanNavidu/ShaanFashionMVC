@@ -24,8 +24,10 @@ public class MainController {
     private AnchorPane mainPage;
 
     @FXML
-    void btnChashierOnAction(ActionEvent event) {
-
+    void btnChashierOnAction(ActionEvent event) throws IOException {
+        mainPage.getChildren().clear();
+        AnchorPane load = FXMLLoader.load(getClass().getResource("/view/CasheirDashboard.fxml"));
+        mainPage.getChildren().add(load);
     }
 
     @FXML

@@ -7,9 +7,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import lk.ijse.gdse72.shaanfashion.dto.CustomerDTO;
@@ -19,6 +17,7 @@ import lk.ijse.gdse72.shaanfashion.model.CustomerModel;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class CustomerController implements Initializable {
@@ -134,11 +133,6 @@ public class CustomerController implements Initializable {
     }
 
     @FXML
-    void btnDeleteOnAction(ActionEvent event) {
-
-    }
-
-    @FXML
     void btnEMailSendToCustomerOnAction(ActionEvent event) {
 
     }
@@ -154,22 +148,148 @@ public class CustomerController implements Initializable {
     }
 
     @FXML
-    void btnResertOnAction(ActionEvent event) {
-
+    void btnResertOnAction(ActionEvent event) throws SQLException {
+        refreshPage();
     }
 
     @FXML
-    void btnSaveOnAction(ActionEvent event) {
+    void btnSaveOnAction(ActionEvent event) throws SQLException {
+        String customerId = lblCustomerId.getText();
+        String userId = lblUserId.getText();
+        String customerName = txtCustomerName.getText();
+        String customerAddress = txtCustomerAddress.getText();
+        String customerEmail = txtCustomerEmail.getText();
 
+        // Define regex patterns for validation
+        String namePattern = "^[A-Za-z ]+$";
+        String addressPattern = "^^[a-zA-Z0-9\\s,.'-]{3,}$";
+        String emailPattern = "^[\\w!#$%&'*+/=?`{|}~^-]+(?:\\.[\\w!#$%&'*+/=?`{|}~^-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,6}$";
+
+        //Validate each field using regex patterns
+        boolean isValidName = customerName.matches(namePattern);
+        boolean isValidAddress = customerAddress.matches(addressPattern);
+        boolean isValidEmail = customerEmail.matches(emailPattern);
+
+        txtCustomerName.setStyle(txtCustomerName.getStyle() + ";-fx-border-color: #7367F0;");
+        txtCustomerAddress.setStyle(txtCustomerAddress.getStyle() + ";-fx-border-color: #7367F0;");
+        txtCustomerEmail.setStyle(txtCustomerEmail.getStyle() + ";-fx-border-color: #7367F0;");
+
+        // Highlight invalid fields in red
+
+        if (!isValidName) {
+            txtCustomerName.setStyle(txtCustomerName.getStyle() + ";-fx-border-color: red;");
+        }
+
+        if (!isValidAddress) {
+            txtCustomerAddress.setStyle(txtCustomerAddress.getStyle() + ";-fx-border-color: red;");
+        }
+
+        if (!isValidEmail) {
+            txtCustomerEmail.setStyle(txtCustomerEmail.getStyle() + ";-fx-border-color: red;");
+        }
+
+        if (isValidName && isValidAddress && isValidEmail) {
+            CustomerDTO customerDTO = new CustomerDTO(customerId, userId, customerName, customerAddress, customerEmail);
+
+            boolean isSaved = customerModel.saveCustomer(customerDTO);
+
+            if (isSaved) {
+                new Alert(Alert.AlertType.INFORMATION, "customer save...!").show();
+                lblNotify.setText("customer successfully saved!");
+                refreshPage();
+            } else {
+                new Alert(Alert.AlertType.ERROR, "Fail to save customer...!").show();
+                lblNotify.setText("Failed to save customer.");
+            }
+        }
     }
 
     @FXML
-    void btnUpdateOnAction(ActionEvent event) {
+    void btnUpdateOnAction(ActionEvent event) throws SQLException {
+        String customerId = lblCustomerId.getText();
+        String userId = lblUserId.getText();
+        String customerName = txtCustomerName.getText();
+        String customerAddress = txtCustomerAddress.getText();
+        String customerEmail = txtCustomerEmail.getText();
 
+        // Define regex patterns for validation
+        String namePattern = "^[A-Za-z ]+$";
+        String addressPattern = "^^[a-zA-Z0-9\\s,.'-]{3,}$";
+        String emailPattern = "^[\\w!#$%&'*+/=?`{|}~^-]+(?:\\.[\\w!#$%&'*+/=?`{|}~^-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,6}$";
+
+        //Validate each field using regex patterns
+        boolean isValidName = customerName.matches(namePattern);
+        boolean isValidAddress = customerAddress.matches(addressPattern);
+        boolean isValidEmail = customerEmail.matches(emailPattern);
+
+        txtCustomerName.setStyle(txtCustomerName.getStyle() + ";-fx-border-color: #7367F0;");
+        txtCustomerAddress.setStyle(txtCustomerAddress.getStyle() + ";-fx-border-color: #7367F0;");
+        txtCustomerEmail.setStyle(txtCustomerEmail.getStyle() + ";-fx-border-color: #7367F0;");
+
+        // Highlight invalid fields in red
+
+        if (!isValidName) {
+            txtCustomerName.setStyle(txtCustomerName.getStyle() + ";-fx-border-color: red;");
+        }
+
+        if (!isValidAddress) {
+            txtCustomerAddress.setStyle(txtCustomerAddress.getStyle() + ";-fx-border-color: red;");
+        }
+
+        if (!isValidEmail) {
+            txtCustomerEmail.setStyle(txtCustomerEmail.getStyle() + ";-fx-border-color: red;");
+        }
+
+        if (isValidName && isValidAddress && isValidEmail) {
+            CustomerDTO customerDTO = new CustomerDTO(customerId, userId, customerName, customerAddress, customerEmail);
+
+            boolean isUpdated = customerModel.updateCustomer(customerDTO);
+
+            if (isUpdated) {
+                lblNotify.setText("Customer updated successfully!");
+                refreshTable(); // Refresh the table to show updated data
+            } else {
+                lblNotify.setText("Customer update failed!");
+            }
+        }
+    }
+
+    @FXML
+    void btnDeleteOnAction(ActionEvent event) throws SQLException {
+        String customerId = lblCustomerId.getText();
+
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Are you sure you want to delete this customer?", ButtonType.YES, ButtonType.NO);
+        Optional<ButtonType> buttonType = alert.showAndWait();
+        if (buttonType.get() == ButtonType.YES) {
+
+            boolean isDeleted = customerModel.deleteCustomer(customerId);
+
+            if (isDeleted) {
+                lblNotify.setText("Customer deleted successfully!");
+                refreshTable(); // Refresh the table to show updated data
+                refreshPage();  // Refresh the entire page to clear fields
+            } else {
+                lblNotify.setText("Customer delete failed!");
+            }
+        }
     }
 
     @FXML
     void onClickTable(MouseEvent event) {
+        CustomerTM selectedItem = tblCustomer.getSelectionModel().getSelectedItem();
+        if (selectedItem != null) {
+            lblCustomerId.setText(selectedItem.getCustomerId());
+            lblUserId.setText(selectedItem.getUserId());
+            txtCustomerName.setText(selectedItem.getCustomerName());
+            txtCustomerAddress.setText(selectedItem.getCustomerAddress());
+            txtCustomerEmail.setText(selectedItem.getCustomerEmail());
 
+            btnSave.setDisable(true);
+
+            btnDelete.setDisable(false);
+            btnUpdate.setDisable(false);
+            btnGenerateReport.setDisable(false);
+            btnEMailSendToCustomer.setDisable(false);
+        }
     }
 }

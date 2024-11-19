@@ -90,7 +90,7 @@ public class ItemModel {
 
     public boolean saveItem(ItemDTO itemDTO) throws SQLException {
         return CrudUtil.execute(
-                "insert into customer values (?,?,?,?,?,?,?,?,?)",
+                "insert into item values (?,?,?,?,?,?,?,?,?)",
                 itemDTO.getItemId(),
                 itemDTO.getItemName(),
                 itemDTO.getCategoryId(),
