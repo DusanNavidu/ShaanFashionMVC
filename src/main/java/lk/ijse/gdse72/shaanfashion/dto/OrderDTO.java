@@ -13,6 +13,5 @@ public class OrderDTO {
     private String OrdersId;
     private String customerId;
     private BigDecimal totalAmount;
-    private String returnOrderId;
     private String description;
 }

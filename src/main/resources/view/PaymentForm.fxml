@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane prefHeight="970.0" prefWidth="1720.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.gdse72.shaanfashion.controller.PaymentController">
+   <children>
+      <Label layoutX="775.0" layoutY="45.0" text="PAYMENT" textFill="#cf1919" underline="true" AnchorPane.leftAnchor="600.0" AnchorPane.topAnchor="25.0">
+         <font>
+            <Font name="Bodoni MT Bold" size="48.0" />
+         </font>
+      </Label>
+      <VBox layoutX="165.0" layoutY="188.0" prefHeight="286.0" prefWidth="1620.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="100.0">
+         <children>
+            <HBox prefHeight="45.0" prefWidth="550.0" spacing="130.0">
+               <children>
+                  <Label text="Payment ID">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="lblPaymentId" prefHeight="27.0" prefWidth="95.0">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+               </children>
+               <padding>
+                  <Insets top="5.0" />
+               </padding>
+            </HBox>
+            <HBox prefHeight="45.0" prefWidth="550.0" spacing="160.0">
+               <children>
+                  <Label text="Order ID">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="lblOrderId" prefHeight="27.0" prefWidth="108.0">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+               </children>
+               <padding>
+                  <Insets top="5.0" />
+               </padding>
+            </HBox>
+            <HBox layoutX="10.0" layoutY="55.0" prefHeight="45.0" prefWidth="550.0" spacing="143.0">
+               <children>
+                  <Label text="Total Price">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="lblTotalPrice" prefHeight="27.0" prefWidth="108.0">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+               </children>
+               <padding>
+                  <Insets top="5.0" />
+               </padding>
+            </HBox>
+            <HBox layoutX="10.0" layoutY="55.0" prefHeight="45.0" prefWidth="550.0" spacing="150.0">
+               <children>
+                  <Label text="Disscount">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="lblDisscount" prefHeight="27.0" prefWidth="108.0">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+               </children>
+               <padding>
+                  <Insets top="5.0" />
+               </padding>
+            </HBox>
+            <HBox layoutX="10.0" layoutY="55.0" prefHeight="45.0" prefWidth="550.0" spacing="192.0">
+               <children>
+                  <Label text="Time">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="lblTime" prefHeight="27.0" prefWidth="108.0">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+               </children>
+               <padding>
+                  <Insets top="5.0" />
+               </padding>
+            </HBox>
+            <HBox layoutX="10.0" layoutY="190.0" prefHeight="45.0" prefWidth="550.0" spacing="195.0">
+               <children>
+                  <Label text="Date">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="lblDate" prefHeight="27.0" prefWidth="108.0">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+               </children>
+               <padding>
+                  <Insets top="5.0" />
+               </padding>
+            </HBox>
+         </children>
+      </VBox>
+      <HBox layoutX="119.0" layoutY="398.0" prefHeight="89.0" prefWidth="1670.0" spacing="100.0" AnchorPane.leftAnchor="25.0" AnchorPane.rightAnchor="25.0" AnchorPane.topAnchor="380.0">
+         <children>
+            <JFXButton fx:id="btnResert" buttonType="RAISED" onAction="#btnResertOnAction" prefHeight="40.0" prefWidth="300.0" style="-fx-background-color: #00ffff; -fx-border-color: black; -fx-background-radius: 10; -fx-border-radius: 10;" text="Resert">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </JFXButton>
+            <JFXButton fx:id="btnDelete" buttonType="RAISED" layoutX="10.0" layoutY="10.0" onAction="#btnDeleteOnAction" prefHeight="40.0" prefWidth="300.0" style="-fx-background-color: #ff0000; -fx-background-radius: 10; -fx-border-radius: 10; -fx-border-color: black;" text="Delete">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </JFXButton>
+            <JFXButton fx:id="btnUpdate" buttonType="RAISED" layoutX="162.0" layoutY="10.0" onAction="#btnUpdateOnAction" prefHeight="40.0" prefWidth="300.0" style="-fx-background-color: #ffff00; -fx-background-radius: 10; -fx-border-radius: 10; -fx-border-color: black;" text="Update">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </JFXButton>
+            <JFXButton fx:id="btnPAY" buttonType="RAISED" layoutX="314.0" layoutY="10.0" onAction="#btnPAYOnAction" prefHeight="70.0" prefWidth="450.0" style="-fx-background-color: #00ff00; -fx-border-radius: 10; -fx-background-radius: 10; -fx-border-color: black;" text="PAY">
+               <font>
+                  <Font name="Bodoni MT Black Italic" size="36.0" />
+               </font>
+            </JFXButton>
+         </children>
+      </HBox>
+      <ImageView fitHeight="67.0" fitWidth="81.0" layoutX="1413.0" layoutY="489.0" AnchorPane.topAnchor="300.0">
+         <image>
+            <Image url="@../icon/pay_7856189.png" />
+         </image>
+      </ImageView>
+      <TableView fx:id="tblPayment" layoutX="35.0" layoutY="830.0" onMouseClicked="#onClickTable" prefHeight="416.0" prefWidth="1670.0" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="25.0" AnchorPane.rightAnchor="25.0">
+         <columns>
+            <TableColumn fx:id="colPaymentId" prefWidth="194.3333282470703" text="Payment ID" />
+            <TableColumn fx:id="colOrderId" prefWidth="258.6666564941406" text="Order ID" />
+            <TableColumn fx:id="colTotalPrice" prefWidth="318.3333740234375" text="Total Price" />
+            <TableColumn fx:id="colDisscount" prefWidth="357.0" text="Disscount" />
+            <TableColumn fx:id="colTime" prefWidth="280.333251953125" text="Time" />
+            <TableColumn fx:id="colDate" prefWidth="263.666748046875" text="Date" />
+         </columns>
+      </TableView>
+      <Line endX="1523.5" layoutX="181.0" layoutY="502.0" startX="-146.0" AnchorPane.leftAnchor="25.0" AnchorPane.rightAnchor="25.0" AnchorPane.topAnchor="510.0" />
+      <JFXButton fx:id="btnGenerateReport" buttonType="RAISED" layoutX="53.0" layoutY="467.0" onAction="#btnGenerateReportOnAction" prefHeight="40.0" prefWidth="300.0" style="-fx-background-color: #b3b3ff; -fx-background-radius: 10; -fx-border-radius: 10; -fx-border-color: black;" text="Order Report" AnchorPane.leftAnchor="25.0" AnchorPane.topAnchor="450.0">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </JFXButton>
+   </children>
+</AnchorPane>

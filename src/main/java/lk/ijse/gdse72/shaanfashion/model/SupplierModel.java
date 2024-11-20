@@ -1,5 +1,6 @@
 package lk.ijse.gdse72.shaanfashion.model;
 
+import lk.ijse.gdse72.shaanfashion.dto.CustomerDTO;
 import lk.ijse.gdse72.shaanfashion.dto.SupplierDTO;
 import lk.ijse.gdse72.shaanfashion.util.CrudUtil;
 
@@ -51,13 +52,13 @@ public class SupplierModel {
     }
 
     public boolean updateSupplier(SupplierDTO supplierDTO) throws SQLException {
-        return CrudUtil.execute(
-                "update supplier set supplierName=?, supplyItem=?, supplierAddress=?, contactNo=? where supplierId=?",
-                supplierDTO.getSupplierId(),
-                supplierDTO.getSupplierName(),
-                supplierDTO.getSupplyItem(),
-                supplierDTO.getSupplierAddress(),
-                supplierDTO.getContactNo()
+        String sql = "UPDATE supplier SET supplierName = ?, supplyItem = ?, supplierAddress = ?, contactNo = ? WHERE supplierId = ?";
+        return CrudUtil.execute(sql,
+                supplierDTO.getSupplierName(), // supplierName
+                supplierDTO.getSupplyItem(),    // supplyItem
+                supplierDTO.getSupplierAddress(), // supplierAddress
+                supplierDTO.getContactNo(), // contactNo
+                supplierDTO.getSupplierId() // supplierId
         );
     }
 

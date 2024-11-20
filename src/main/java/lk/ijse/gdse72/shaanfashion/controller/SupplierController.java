@@ -7,19 +7,18 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import lk.ijse.gdse72.shaanfashion.dto.SupplierDTO;
+import lk.ijse.gdse72.shaanfashion.dto.tm.CustomerTM;
 import lk.ijse.gdse72.shaanfashion.dto.tm.SupplierTM;
 import lk.ijse.gdse72.shaanfashion.model.SupplierModel;
 
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class SupplierController implements Initializable {
@@ -128,8 +127,23 @@ public class SupplierController implements Initializable {
     }
 
     @FXML
-    void btnDeleteOnAction(ActionEvent event) {
+    void btnDeleteOnAction(ActionEvent event) throws SQLException {
+        String customerId = lblSupplierId.getText();
 
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Are you sure you want to delete this customer?", ButtonType.YES, ButtonType.NO);
+        Optional<ButtonType> buttonType = alert.showAndWait();
+        if (buttonType.get() == ButtonType.YES) {
+
+            boolean isDeleted = supplierModel.deleteSupplier(customerId);
+
+            if (isDeleted) {
+                lblNotify.setText("Customer deleted successfully!");
+                refreshTable(); // Refresh the table to show updated data
+                refreshPage();  // Refresh the entire page to clear fields
+            } else {
+                lblNotify.setText("Customer delete failed!");
+            }
+        }
     }
 
     @FXML
@@ -179,8 +193,6 @@ public class SupplierController implements Initializable {
             txtSupplierContactNo.setStyle(txtSupplierContactNo.getStyle() + ";-fx-border-color: red;");
         }
 
-
-        // Save customer if all fields are valid
         if (isValidName && isValidAddress && isValidPhone) {
             SupplierDTO supplierDTO = new SupplierDTO(supplierId, supplierName, supplierItem, supplierAddress, supplierContactNo);
 
@@ -198,13 +210,73 @@ public class SupplierController implements Initializable {
     }
 
     @FXML
-    void btnUpdateOnAction(ActionEvent event) {
+    void btnUpdateOnAction(ActionEvent event) throws SQLException {
+        String supplierId = lblSupplierId.getText();
+        String supplierName = txtSupplierName.getText();
+        String supplierItem = txtSupplyItem.getText();
+        String supplierAddress = txtSupplierAddress.getText();
+        String supplierContactNo = txtSupplierContactNo.getText();
 
+        // Define regex patterns for validation
+        String namePattern = "^[A-Za-z ]+$";
+        String addressPattern = "^^[a-zA-Z0-9\\s,.'-]{3,}$";
+        //String emailPattern = "^[\\w!#$%&'*+/=?`{|}~^-]+(?:\\.[\\w!#$%&'*+/=?`{|}~^-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,6}$";
+        String phonePattern = "^(\\d+)||((\\d+\\.)(\\d){2})$";
+
+        boolean isValidName = supplierName.matches(namePattern);
+        boolean isValidAddress = supplierAddress.matches(addressPattern);
+        boolean isValidPhone = supplierContactNo.matches(phonePattern);
+
+        // Reset input field styles
+        txtSupplierName.setStyle(txtSupplierName.getStyle() + ";-fx-border-color: #7367F0;");
+        txtSupplyItem.setStyle(txtSupplyItem.getStyle() + ";-fx-border-color: #7367F0;");
+        txtSupplierAddress.setStyle(txtSupplierAddress.getStyle() + ";-fx-border-color: #7367F0;");
+        txtSupplierContactNo.setStyle(txtSupplierContactNo.getStyle() + ";-fx-border-color: #7367F0;");
+
+        // Highlight invalid fields in red
+        if (!isValidName) {
+            txtSupplierName.setStyle(txtSupplierName.getStyle() + ";-fx-border-color: red;");
+        }
+
+        if (!isValidAddress) {
+            txtSupplierAddress.setStyle(txtSupplierAddress.getStyle() + ";-fx-border-color: red;");
+        }
+
+        if (!isValidPhone) {
+            txtSupplierContactNo.setStyle(txtSupplierContactNo.getStyle() + ";-fx-border-color: red;");
+        }
+
+        if (isValidName && isValidAddress && isValidPhone) {
+            SupplierDTO supplierDTO = new SupplierDTO(supplierId, supplierName, supplierItem, supplierAddress, supplierContactNo);
+
+            boolean isUpdated = supplierModel.updateSupplier(supplierDTO);
+
+            if (isUpdated) {
+                new Alert(Alert.AlertType.INFORMATION, "supplier update...!").show();
+                lblNotify.setText("supplier successfully update!");
+                refreshPage();
+            } else {
+                new Alert(Alert.AlertType.ERROR, "Fail to update supplier...!").show();
+                lblNotify.setText("Failed to update supplier.");
+            }
+        }
     }
 
     @FXML
     void onClickTable(MouseEvent event) {
+        SupplierTM selectedItem = tblSupplier.getSelectionModel().getSelectedItem();
+        if (selectedItem != null) {
+            lblSupplierId.setText(selectedItem.getSupplierId());
+            txtSupplierName.setText(selectedItem.getSupplierName());
+            txtSupplyItem.setText(selectedItem.getSupplyItem());
+            txtSupplierAddress.setText(selectedItem.getSupplierAddress());
+            txtSupplierContactNo.setText(selectedItem.getContactNo());
 
+            btnSave.setDisable(true);
+
+            btnDelete.setDisable(false);
+            btnUpdate.setDisable(false);
+            btnGenerateReport.setDisable(false);
+        }
     }
-
 }

@@ -12,6 +12,5 @@ public class OrderTM {
     private String OrdersId;
     private String customerId;
     private BigDecimal totalAmount;
-    private String returnOrderId;
     private String description;
 }

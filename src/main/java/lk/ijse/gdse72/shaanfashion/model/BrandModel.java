@@ -82,9 +82,9 @@ public class BrandModel {
     public boolean updateBrand(BrandDTO brandDTO) throws SQLException {
         return CrudUtil.execute(
                 "update brand set brandName=?, description=? where brandId=?",
+                brandDTO.getDescription(),  // Description
                 brandDTO.getBrandId(),  // Brand ID
-                brandDTO.getBrandName(),   // Brand Name
-                brandDTO.getDescription()    // Description
+                brandDTO.getBrandName()   // Brand Name
         );
     }
 

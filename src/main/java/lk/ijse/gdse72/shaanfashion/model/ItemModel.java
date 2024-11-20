@@ -106,7 +106,6 @@ public class ItemModel {
     public boolean updateItem(ItemDTO itemDTO) throws SQLException {
         return CrudUtil.execute(
                 "update item set itemName=?, categoryId=?, brandId=?, itemQuantityOnHand=?, batchNumber=?, description=?, price=?, profit=? where itemId=?",
-                itemDTO.getItemId(),
                 itemDTO.getItemName(),
                 itemDTO.getCategoryId(),
                 itemDTO.getBrandId(),
@@ -114,7 +113,8 @@ public class ItemModel {
                 itemDTO.getBatchNumber(),
                 itemDTO.getDescription(),
                 itemDTO.getPrice(),
-                itemDTO.getProfit()
+                itemDTO.getProfit(),
+                itemDTO.getItemId()
         );
     }
 

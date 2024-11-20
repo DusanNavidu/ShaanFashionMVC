@@ -13,8 +13,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="970.0" prefWidth="1720.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.gdse72.shaanfashion.controller.ItemController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="970.0" prefWidth="1720.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.gdse72.shaanfashion.controller.ItemController">
    <children>
       <Label layoutX="838.0" layoutY="30.0" text="ITEM" textFill="#cf1919" underline="true" AnchorPane.leftAnchor="600.0" AnchorPane.topAnchor="25.0">
          <font>
@@ -183,5 +182,6 @@
             <TableColumn fx:id="colDescription" prefWidth="305.3333740234375" text="Description" />
         </columns>
       </TableView>
+      <Label fx:id="lblNotify" layoutX="59.0" layoutY="467.0" prefHeight="38.0" prefWidth="304.0" AnchorPane.leftAnchor="25.0" />
    </children>
 </AnchorPane>

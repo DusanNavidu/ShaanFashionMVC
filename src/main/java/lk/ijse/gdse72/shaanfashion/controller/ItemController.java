@@ -11,6 +11,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import lk.ijse.gdse72.shaanfashion.dto.ItemDTO;
+import lk.ijse.gdse72.shaanfashion.dto.tm.CustomerTM;
 import lk.ijse.gdse72.shaanfashion.dto.tm.ItemTM;
 import lk.ijse.gdse72.shaanfashion.model.BrandModel;
 import lk.ijse.gdse72.shaanfashion.model.CategoryModel;
@@ -21,6 +22,7 @@ import java.math.BigDecimal;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class ItemController implements Initializable {
@@ -99,6 +101,9 @@ public class ItemController implements Initializable {
 
     @FXML
     private JFXTextField txtPeice;
+
+    @FXML
+    private Label lblNotify;
 
     @FXML
     private JFXTextField txtProfit;
@@ -217,8 +222,23 @@ public class ItemController implements Initializable {
     }
 
     @FXML
-    void btnDeleteOnAction(ActionEvent event) {
+    void btnDeleteOnAction(ActionEvent event) throws SQLException {
+        String customerId = lblItemId.getText();
 
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Are you sure you want to delete this Item?", ButtonType.YES, ButtonType.NO);
+        Optional<ButtonType> buttonType = alert.showAndWait();
+        if (buttonType.get() == ButtonType.YES) {
+
+            boolean isDeleted = itemModel.deleteCustomer(customerId);
+
+            if (isDeleted) {
+                lblNotify.setText("Item deleted successfully!");
+                refreshTable(); // Refresh the table to show updated data
+                refreshPage();  // Refresh the entire page to clear fields
+            } else {
+                lblNotify.setText("Item delete failed!");
+            }
+        }
     }
 
     @FXML
@@ -363,7 +383,23 @@ public class ItemController implements Initializable {
 
     @FXML
     void onClickTable(MouseEvent event) {
+        ItemTM selectedItem = tblItem.getSelectionModel().getSelectedItem();
+        if (selectedItem != null) {
+            lblItemId.setText(selectedItem.getItemId());
+            txtItemName.setText(selectedItem.getItemName());
+            comCategoryId.getSelectionModel().select(selectedItem.getCategoryId());
+            comBrandId.getSelectionModel().select(selectedItem.getBrandId());
+            txtItemQuantity.setText(String.valueOf(selectedItem.getItemQuantityOnHand())); // if it's an integer
+            lblBatchNumber.setText(selectedItem.getBatchNumber());
+            txtDescription.setText(selectedItem.getDescription());
+            txtPeice.setText(String.valueOf(selectedItem.getPrice())); // if it's a number
+            txtProfit.setText(String.valueOf(selectedItem.getProfit())); // if it's a number
 
+            btnSave.setDisable(true);
+
+            btnDelete.setDisable(false);
+            btnUpdate.setDisable(false);
+            btnItemReport.setDisable(false);
+        }
     }
-
 }

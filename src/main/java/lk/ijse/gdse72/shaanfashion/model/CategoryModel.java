@@ -59,9 +59,9 @@ public class CategoryModel {
     public boolean updateCategory(CategoryDTO categoryDTO) throws SQLException {
         return CrudUtil.execute(
                 "update category set categoryName=?, description=? where categoryId=?",
-                categoryDTO.getCategoryId(),
                 categoryDTO.getCategoryName(),
-                categoryDTO.getDescription()
+                categoryDTO.getDescription(),
+                categoryDTO.getCategoryId()
         );
     }
 

@@ -1,95 +1,70 @@
 package lk.ijse.gdse72.shaanfashion.controller;
 
-import com.jfoenix.controls.JFXButton;
-import com.jfoenix.controls.JFXTextField;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 
 public class OrderController {
-
-    @FXML
-    private JFXButton btnDelete;
-
-    @FXML
-    private JFXButton btnOrderReport;
-
-    @FXML
-    private JFXButton btnResert;
-
-    @FXML
-    private JFXButton btnSave;
-
-    @FXML
-    private JFXButton btnUpdate;
 
     @FXML
     private TableColumn<?, ?> colCustomerId;
 
     @FXML
-    private TableColumn<?, ?> colDescription;
+    private TableColumn<?, ?> colItemName;
+
+    @FXML
+    private TableColumn<?, ?> colItemPrice;
+
+    @FXML
+    private TableColumn<?, ?> colItemQuantity;
 
     @FXML
     private TableColumn<?, ?> colOrderId;
 
     @FXML
-    private TableColumn<?, ?> colReturnOrderId;
-
-    @FXML
     private TableColumn<?, ?> colTotalAmount;
 
     @FXML
-    private ComboBox<?> comCustemerId;
+    private ListView<?> lstItems;
 
     @FXML
-    private ComboBox<?> comReturnOrderId;
+    private TableView<?> tblOrderDetails;
 
     @FXML
-    private Label lblCustoemerId;
+    private TableView<?> tblOrders;
 
     @FXML
-    private Label lblNotify;
+    private TextField txtCustomerId;
 
     @FXML
-    private Label lblOrderId;
+    private TextField txtItem;
 
     @FXML
-    private Label lblReturnOrderId;
+    private TextField txtOrderId;
 
     @FXML
-    private TableView<?> tblOrder;
+    private TextField txtQuantity;
 
     @FXML
-    private JFXTextField txtDescription;
-
-    @FXML
-    private JFXTextField txtTotalAmount;
-
-    @FXML
-    void btnDeleteOnAction(ActionEvent event) {
+    void addItem(ActionEvent event) {
 
     }
 
     @FXML
-    void btnOrderReportOnAction(ActionEvent event) {
+    void deleteOrder(ActionEvent event) {
 
     }
 
     @FXML
-    void btnResertOnAction(ActionEvent event) {
+    void resetForm(ActionEvent event) {
 
     }
 
     @FXML
-    void btnSaveOnAction(ActionEvent event) {
-
-    }
-
-    @FXML
-    void btnUpdateOnAction(ActionEvent event) {
+    void saveOrder(ActionEvent event) {
 
     }
 

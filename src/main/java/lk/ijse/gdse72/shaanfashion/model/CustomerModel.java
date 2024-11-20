@@ -29,10 +29,10 @@ public class CustomerModel {
         while (rst.next()) {
             CustomerDTO customerDTO = new CustomerDTO(
                     rst.getString(1),  // Customer ID
-                    rst.getString(2),  // Name
-                    rst.getString(3),  // NIC
-                    rst.getString(4),  // Email
-                    rst.getString(5)   // Phone
+                    rst.getString(2),  // User ID
+                    rst.getString(3),  // Name
+                    rst.getString(4),  // Address
+                    rst.getString(5)   // Email
             );
             customerDTOS.add(customerDTO);
         }
@@ -82,10 +82,10 @@ public class CustomerModel {
         if (rst.next()) {
             return new CustomerDTO(
                     rst.getString(1),  // Customer ID
-                    rst.getString(2),  // Name
-                    rst.getString(3),  // NIC
-                    rst.getString(4),  // Email
-                    rst.getString(5)   // Phone
+                    rst.getString(2),  // User ID
+                    rst.getString(3),  // Name
+                    rst.getString(4),  // Address
+                    rst.getString(5)   // Email
             );
         }
         return null;

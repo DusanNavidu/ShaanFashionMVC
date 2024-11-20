@@ -1,11 +1,6 @@
 package lk.ijse.gdse72.shaanfashion.model;
 
-import lk.ijse.gdse72.shaanfashion.util.CrudUtil;
-
-import java.sql.SQLException;
-import java.util.ArrayList;
-
-public class OrderDetailsDTO {
+public class OrderDetailsModel {
 
     private final ItemModel itemModel = new ItemModel();
 
