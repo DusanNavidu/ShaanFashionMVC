@@ -1,70 +1,95 @@
 package lk.ijse.gdse72.shaanfashion.controller;
 
+import com.jfoenix.controls.JFXTextField;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.ListView;
+import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
 
 public class OrderController {
 
     @FXML
-    private TableColumn<?, ?> colCustomerId;
+    private Button btnAddToCart;
 
     @FXML
-    private TableColumn<?, ?> colItemName;
+    private Button btnPay;
 
     @FXML
-    private TableColumn<?, ?> colItemPrice;
+    private Button btnReset;
 
     @FXML
-    private TableColumn<?, ?> colItemQuantity;
+    private ComboBox<?> cmbCustomerId;
 
     @FXML
-    private TableColumn<?, ?> colOrderId;
+    private ComboBox<?> cmbItemId;
 
     @FXML
-    private TableColumn<?, ?> colTotalAmount;
+    private TableColumn<?, ?> colAction;
 
     @FXML
-    private ListView<?> lstItems;
+    private TableColumn<?, ?> colItemId;
 
     @FXML
-    private TableView<?> tblOrderDetails;
+    private TableColumn<?, ?> colName;
 
     @FXML
-    private TableView<?> tblOrders;
+    private TableColumn<?, ?> colPrice;
 
     @FXML
-    private TextField txtCustomerId;
+    private TableColumn<?, ?> colQuantity;
 
     @FXML
-    private TextField txtItem;
+    private TableColumn<?, ?> colTotal;
 
     @FXML
-    private TextField txtOrderId;
+    private Label lblCustomerName;
 
     @FXML
-    private TextField txtQuantity;
+    private Label lblItemName;
 
     @FXML
-    void addItem(ActionEvent event) {
+    private Label lblItemPrice;
+
+    @FXML
+    private Label lblItemQty;
+
+    @FXML
+    private Label lblOrderId;
+
+    @FXML
+    private Label orderDate;
+
+    @FXML
+    private TableView<?> tblCart;
+
+    @FXML
+    private JFXTextField txtAddToCartQty;
+
+    @FXML
+    void btnAddToCartOnAction(ActionEvent event) {
 
     }
 
     @FXML
-    void deleteOrder(ActionEvent event) {
+    void btnPayOnAction(ActionEvent event) {
 
     }
 
     @FXML
-    void resetForm(ActionEvent event) {
+    void btnResetOnAction(ActionEvent event) {
 
     }
 
     @FXML
-    void saveOrder(ActionEvent event) {
+    void cmbCustomerOnAction(ActionEvent event) {
+
+    }
+
+    @FXML
+    void cmbItemOnAction(ActionEvent event) {
 
     }
 

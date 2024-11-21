@@ -1,6 +1,7 @@
 package lk.ijse.gdse72.shaanfashion.model;
 
 import lk.ijse.gdse72.shaanfashion.dto.ItemDTO;
+import lk.ijse.gdse72.shaanfashion.dto.OrderDetailsDTO;
 import lk.ijse.gdse72.shaanfashion.util.CrudUtil;
 
 import java.sql.ResultSet;
@@ -122,11 +123,11 @@ public class ItemModel {
         return CrudUtil.execute("delete from item where itemId=?", itemId);
     }
 
-    /*public boolean reduceQty(OrderDetailsDTO orderDetailsDTO) throws SQLException {
+    public boolean reduceQty(OrderDetailsDTO orderDetailsDTO) throws SQLException {
         return CrudUtil.execute(
-                "update item set quantity = quantity - ? where item_id = ?",
-                orderDetailsDTO.getQuantity(),   // Quantity to reduce
+                "update item set qty = qty - ? where itemId = ?",
+                orderDetailsDTO.getQty(),   // QYT to reduce
                 orderDetailsDTO.getItemId()      // Item ID
         );
-    }*/
+    }
 }
