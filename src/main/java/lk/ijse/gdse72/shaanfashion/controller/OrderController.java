@@ -79,6 +79,9 @@ public class OrderController implements Initializable {
     private Label orderDate;
 
     @FXML
+    private JFXTextField txtAddToCartQty;
+
+    @FXML
     private TableView<CartTM> tblCart;
 
     private final OrderModel orderModel = new OrderModel();
@@ -145,9 +148,6 @@ public class OrderController implements Initializable {
     }
 
     @FXML
-    private JFXTextField txtAddToCartQty;
-
-    @FXML
     void btnAddToCartOnAction(ActionEvent event) {
         String selectedItemId = cmbItemId.getValue();
 
@@ -179,19 +179,15 @@ public class OrderController implements Initializable {
         double unitPrice = Double.parseDouble(lblItemPrice.getText());
         double total = unitPrice * cartQty;
 
-        // Loop through each item in cart's observable list.
         for (CartTM cartTM : cartTMS) {
 
-            // Check if the item is already in the cart
             if (cartTM.getItemId().equals(selectedItemId)) {
-                // Update the existing CartTM object in the cart's observable list with the new quantity and total.
                 int newQty = cartTM.getCartQuantity() + cartQty;
-                cartTM.setCartQuantity(newQty); // Add the new quantity to the existing quantity in the cart.
-                cartTM.setTotal(unitPrice * newQty); // Recalculate the total price based on the updated quantity
+                cartTM.setCartQuantity(newQty);
+                cartTM.setTotal(unitPrice * newQty);
 
-                // Refresh the table to display the updated information.
                 tblCart.refresh();
-                return; // Exit the method as the cart item has been updated.
+                return;
             }
         }
 
@@ -232,13 +228,10 @@ public class OrderController implements Initializable {
         Date dateOfOrder = Date.valueOf(orderDate.getText());
         String customerId = cmbCustomerId.getValue();
 
-        // List to hold order details
         ArrayList<OrderDetailsDTO> orderDetailsDTOS = new ArrayList<>();
 
-        // Collect data for each item in the cart and add to order details array
         for (CartTM cartTM : cartTMS) {
 
-            // Create order details for each cart item
             OrderDetailsDTO orderDetailsDTO = new OrderDetailsDTO(
                     orderId,
                     cartTM.getItemId(),
@@ -246,11 +239,9 @@ public class OrderController implements Initializable {
                     cartTM.getUnitPrice()
             );
 
-            // Add to order details array
             orderDetailsDTOS.add(orderDetailsDTO);
         }
 
-        // Create an OrderDTO with relevant order data
         OrderDTO orderDTO = new OrderDTO(
                 orderId,
                 customerId,
@@ -263,7 +254,6 @@ public class OrderController implements Initializable {
         if (isSaved) {
             new Alert(Alert.AlertType.INFORMATION, "Order saved..!").show();
 
-            // Reset the page after placing the order
             refreshPage();
         } else {
             new Alert(Alert.AlertType.ERROR, "Order fail..!").show();
@@ -280,10 +270,8 @@ public class OrderController implements Initializable {
         String selectedCustomerId = cmbCustomerId.getSelectionModel().getSelectedItem();
         CustomerDTO customerDTO = customerModel.findById(selectedCustomerId);
 
-        // If customer found (customerDTO not null)
         if (customerDTO != null) {
 
-            // FIll customer related labels
             lblCustomerName.setText(customerDTO.getCustomerName());
         }
     }
@@ -293,10 +281,8 @@ public class OrderController implements Initializable {
         String selectedItemId = cmbItemId.getSelectionModel().getSelectedItem();
         ItemDTO itemDTO = itemModel.findById(selectedItemId);
 
-        // If item found (itemDTO not null)
         if (itemDTO != null) {
 
-            // FIll item related labels
             lblItemName.setText(itemDTO.getItemName());
             lblItemQty.setText(String.valueOf(itemDTO.getItemQuantityOnHand()));
             lblItemPrice.setText(String.valueOf(itemDTO.getPrice()));

@@ -125,7 +125,7 @@ public class ItemModel {
 
     public boolean reduceQty(OrderDetailsDTO orderDetailsDTO) throws SQLException {
         return CrudUtil.execute(
-                "update item set qty = qty - ? where itemId = ?",
+                "update item set itemQuantityOnHand = itemQuantityOnHand - ? where itemId = ?",
                 orderDetailsDTO.getQuantity(),   // QYT to reduce
                 orderDetailsDTO.getItemId()      // Item ID
         );

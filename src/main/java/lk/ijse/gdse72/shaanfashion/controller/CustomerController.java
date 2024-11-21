@@ -6,14 +6,21 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
+import javafx.stage.Window;
 import lk.ijse.gdse72.shaanfashion.dto.CustomerDTO;
 import lk.ijse.gdse72.shaanfashion.dto.tm.CustomerTM;
 import lk.ijse.gdse72.shaanfashion.model.CustomerModel;
 
+import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -134,7 +141,35 @@ public class CustomerController implements Initializable {
 
     @FXML
     void btnEMailSendToCustomerOnAction(ActionEvent event) {
+        CustomerTM selectedItem = tblCustomer.getSelectionModel().getSelectedItem();
+        if (selectedItem == null) {
+            new Alert(Alert.AlertType.WARNING, "Please select customer..!");
+            return;
+        }
 
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/MailSendForm.fxml"));
+            Parent load = loader.load();
+
+            MailSendController sendMailController = loader.getController();
+
+            String email = selectedItem.getCustomerEmail();
+            sendMailController.setCustomerEmail(email);
+
+            Stage stage = new Stage();
+            stage.setScene(new Scene(load));
+            stage.setTitle("Send email");
+
+            stage.initModality(Modality.APPLICATION_MODAL);
+
+            Window underWindow = btnUpdate.getScene().getWindow();
+            stage.initOwner(underWindow);
+
+            stage.showAndWait();
+        } catch (IOException e) {
+            new Alert(Alert.AlertType.ERROR, "Fail to load ui..!");
+            e.printStackTrace();
+        }
     }
 
     @FXML
