@@ -297,7 +297,7 @@ public class ItemController implements Initializable {
             resetStyles();
 
             int quantity = Integer.parseInt(itemQuantityOnHand);
-            BigDecimal price = new BigDecimal(priceStr);
+            double price = Double.parseDouble(priceStr);
             BigDecimal profit = new BigDecimal(profitStr);
 
             ItemDTO itemDTO = new ItemDTO(itemId, itemName, categoryId, brandId, itemQuantityOnHand, batchNumber, description, price, profit);
@@ -355,7 +355,7 @@ public class ItemController implements Initializable {
             resetStyles();
 
             int quantity = Integer.parseInt(itemQuantityOnHand);
-            BigDecimal price = new BigDecimal(priceStr);
+            double price = Double.parseDouble(priceStr);
             BigDecimal profit = new BigDecimal(profitStr);
 
             ItemDTO itemDTO = new ItemDTO(itemId, itemName, categoryId, brandId, itemQuantityOnHand, batchNumber, description, price, profit);

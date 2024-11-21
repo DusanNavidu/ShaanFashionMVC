@@ -12,10 +12,8 @@ import java.sql.Date;
 @NoArgsConstructor
 @ToString
 public class OrderDetailsDTO {
+    private String orderId;
     private String itemId;
-    private String ordersId;
-    private int qty;
-    private BigDecimal price;
-    private Time time;
-    private Date date;
+    private int quantity;
+    private double price;
 }

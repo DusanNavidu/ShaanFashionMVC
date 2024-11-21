@@ -2,15 +2,19 @@ package lk.ijse.gdse72.shaanfashion.dto;
 
 import lombok.*;
 
-import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.Date;
 
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
+
 public class OrderDTO {
-    private String ordersId;
+    private String orderId;
     private String customerId;
-    private BigDecimal totalAmount;
+    private Date orderDate;
+
+    private ArrayList<OrderDetailsDTO> orderDetailsDTOS;
 }

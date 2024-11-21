@@ -4,6 +4,7 @@ import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
 import javafx.event.ActionEvent;
+import javafx.scene.control.Label;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Alert;
@@ -23,6 +24,15 @@ public class OwnerLoginController {
 
     @FXML
     private JFXButton btnSignup;
+
+    @FXML
+    private JFXButton btnForgot;
+
+    @FXML
+    private Label lblPassword;
+
+    @FXML
+    private Label lblUsername;
 
     @FXML
     private AnchorPane ownerLoginPage;
@@ -56,6 +66,11 @@ public class OwnerLoginController {
             new Alert(Alert.AlertType.ERROR, "Wrong !!").show();
             System.out.println("Wrong");
         }
+    }
+
+    @FXML
+    void btnForgotOnAction(ActionEvent event) {
+
     }
 
     @FXML

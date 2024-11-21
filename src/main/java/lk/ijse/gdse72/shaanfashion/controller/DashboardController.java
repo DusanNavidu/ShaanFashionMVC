@@ -8,8 +8,10 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 import javafx.util.Duration;
 
 import java.io.IOException;
@@ -52,6 +54,9 @@ public class DashboardController implements Initializable {
 
     @FXML
     private Label lblDateTime;
+
+    @FXML
+    private Button btnCal;
 
     @FXML
     private JFXButton btnItemAvailability;
@@ -127,6 +132,17 @@ public class DashboardController implements Initializable {
         LocalDateTime now = LocalDateTime.now();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd    HH:mm:ss");
         lblDateTime.setText(now.format(formatter));
+    }
+
+    @FXML
+    private void btnCalOnAction(ActionEvent event) {
+        Stage stage = new Stage();
+        Calculator calculatorApp = new Calculator();
+        try {
+            calculatorApp.start(stage);
+        } catch (Exception e) {
+            new Alert(Alert.AlertType.ERROR, "Error while opening Calculator!").show();
+        }
     }
 
     @FXML

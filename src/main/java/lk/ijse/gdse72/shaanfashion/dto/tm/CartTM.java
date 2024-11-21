@@ -12,8 +12,8 @@ import java.math.BigDecimal;
 public class CartTM {
     private String itemId;
     private String itemName;
-    private int itemQYT;
-    private String unitPrice;
-    private BigDecimal totalAmount;
+    private int cartQuantity;
+    private double unitPrice;
+    private double total;
     private Button removeBtn;
 }

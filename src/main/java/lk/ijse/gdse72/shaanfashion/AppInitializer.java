@@ -11,7 +11,7 @@ import java.io.IOException;
 public class AppInitializer extends Application {
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(AppInitializer.class.getResource("/view/MainForm.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(AppInitializer.class.getResource("/view/DashBoardForm.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         stage.setTitle("Shaan Fashion");
         stage.getIcons().add(

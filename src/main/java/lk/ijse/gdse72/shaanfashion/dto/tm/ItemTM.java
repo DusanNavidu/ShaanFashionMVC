@@ -17,6 +17,6 @@ public class ItemTM {
     private String itemQuantityOnHand;
     private String batchNumber;
     private String description;
-    private BigDecimal price;
+    private double price;
     private BigDecimal profit;
 }

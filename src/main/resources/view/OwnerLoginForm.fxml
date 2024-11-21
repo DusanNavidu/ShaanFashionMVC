@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="ownerLoginPage" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.gdse72.shaanfashion.controller.OwnerLoginController">
+<AnchorPane fx:id="ownerLoginPage" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.gdse72.shaanfashion.controller.OwnerLoginController">
    <children>
       <Pane layoutX="1314.0" layoutY="22.0" prefHeight="1080.0" prefWidth="700.0" style="-fx-background-color: #050A30;" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -27,7 +27,7 @@
                         <Font size="14.0" />
                      </font>
                   </Label>
-                  <JFXButton fx:id="btnSignup" layoutX="382.0" layoutY="484.0" onAction="#btnSignupOnAction" text="Sign up?" textFill="#1504ab">
+                  <JFXButton fx:id="btnSignup" layoutX="382.0" layoutY="484.0" onAction="#btnSignupOnAction" text="Sign up?" textFill="#1504ab" underline="true">
                      <font>
                         <Font size="14.0" />
                      </font>
@@ -63,6 +63,13 @@
                         <Image url="@../icon/password_14562503.png" />
                      </image>
                   </ImageView>
+                  <JFXButton fx:id="btnForgot" layoutX="365.0" layoutY="400.0" onAction="#btnForgotOnAction" text="Forgot password?" textFill="#1504ab" underline="true">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </JFXButton>
+                  <Label fx:id="lblUsername" layoutX="138.0" layoutY="305.0" prefHeight="29.0" prefWidth="148.0" />
+                  <Label fx:id="lblPassword" layoutX="135.0" layoutY="400.0" prefHeight="26.0" prefWidth="175.0" />
                </children>
             </Pane>
          </children>

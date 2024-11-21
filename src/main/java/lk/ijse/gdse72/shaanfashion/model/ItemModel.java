@@ -50,7 +50,7 @@ public class ItemModel {
                     rst.getString(5),
                     rst.getString(6),
                     rst.getString(7),
-                    rst.getBigDecimal(8),
+                    rst.getDouble(8),
                     rst.getBigDecimal(9)
             );
             itemDTOS.add(itemDTO);
@@ -82,7 +82,7 @@ public class ItemModel {
                     rst.getString(5),
                     rst.getString(6),
                     rst.getString(7),
-                    rst.getBigDecimal(8),
+                    rst.getDouble(8),
                     rst.getBigDecimal(9)
             );
         }
@@ -126,7 +126,7 @@ public class ItemModel {
     public boolean reduceQty(OrderDetailsDTO orderDetailsDTO) throws SQLException {
         return CrudUtil.execute(
                 "update item set qty = qty - ? where itemId = ?",
-                orderDetailsDTO.getQty(),   // QYT to reduce
+                orderDetailsDTO.getQuantity(),   // QYT to reduce
                 orderDetailsDTO.getItemId()      // Item ID
         );
     }
