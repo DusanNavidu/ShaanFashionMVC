@@ -16,16 +16,19 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.Window;
+import lk.ijse.gdse72.shaanfashion.db.DBConnection;
 import lk.ijse.gdse72.shaanfashion.dto.CustomerDTO;
 import lk.ijse.gdse72.shaanfashion.dto.tm.CustomerTM;
 import lk.ijse.gdse72.shaanfashion.model.CustomerModel;
+import net.sf.jasperreports.engine.*;
+import net.sf.jasperreports.view.JasperViewer;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Connection;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.Optional;
-import java.util.ResourceBundle;
+import java.time.LocalDate;
+import java.util.*;
 
 public class CustomerController implements Initializable {
 
@@ -39,7 +42,7 @@ public class CustomerController implements Initializable {
     private JFXButton btnGenerateReport;
 
     @FXML
-    private JFXButton btnPreOrderCustomerReport;
+    private JFXButton btnOrderReport;
 
     @FXML
     private JFXButton btnResert;
@@ -173,13 +176,64 @@ public class CustomerController implements Initializable {
     }
 
     @FXML
-    void btnGenerateReportOnAction(ActionEvent event) {
+    void btnOrderReportOnAction(ActionEvent event) {
+        CustomerTM customerTM = tblCustomer.getSelectionModel().getSelectedItem();
 
+        if (customerTM == null) {
+            new Alert(Alert.AlertType.WARNING, "Please select customer..!").show();
+            return;
+        }
+
+        try {
+            JasperReport jasperReport = JasperCompileManager.compileReport(
+                    getClass().getResourceAsStream("/report/CustomerOrderDetailsReport.jrxml"));
+
+            Connection connection = DBConnection.getInstance().getConnection();
+
+            Map<String, Object> parameters = new HashMap<>();
+            parameters.put("P_Date", LocalDate.now().toString());
+            parameters.put("P_customerId", customerTM.getCustomerId());
+
+            JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, parameters, connection);
+
+            JasperViewer.viewReport(jasperPrint, false);
+        } catch (JRException e) {
+            new Alert(Alert.AlertType.ERROR, "Failed to generate report: " + e.getMessage()).show();
+            e.printStackTrace();
+        } catch (SQLException e) {
+            new Alert(Alert.AlertType.ERROR, "Failed to connect to database: " + e.getMessage()).show();
+            e.printStackTrace();
+        }
     }
 
     @FXML
-    void btnPreOrderCustomerReportOnAction(ActionEvent event) {
+    void btnGenerateReportOnAction(ActionEvent event) {
+        CustomerTM customerTM = tblCustomer.getSelectionModel().getSelectedItem();
 
+        if (customerTM == null) {
+            new Alert(Alert.AlertType.WARNING, "Please select customer..!").show();
+            return;
+        }
+
+        try {
+            JasperReport jasperReport = JasperCompileManager.compileReport(
+                    getClass().getResourceAsStream("/report/customer_order_report.jrxml"));
+
+            Connection connection = DBConnection.getInstance().getConnection();
+
+            Map<String, Object> parameters = new HashMap<>();
+            parameters.put("P_Customer_Id", customerTM.getCustomerId());
+
+            JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, parameters, connection);
+
+            JasperViewer.viewReport(jasperPrint, false);
+        } catch (JRException e) {
+            new Alert(Alert.AlertType.ERROR, "Failed to generate report: " + e.getMessage()).show();
+            e.printStackTrace();
+        } catch (SQLException e) {
+            new Alert(Alert.AlertType.ERROR, "Failed to connect to database: " + e.getMessage()).show();
+            e.printStackTrace();
+        }
     }
 
     @FXML

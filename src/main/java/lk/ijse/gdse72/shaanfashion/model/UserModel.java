@@ -5,6 +5,7 @@ import lk.ijse.gdse72.shaanfashion.util.CrudUtil;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class UserModel {
     public String getNextUserId() throws SQLException {
@@ -42,6 +43,28 @@ public class UserModel {
         );
     }
 
+    public String selectUserEmail( String email) throws SQLException {
+        return CrudUtil.execute("SELECT userEmail FROM user WHERE userId = 'U001'");
+    }
+
+    public ArrayList<UserDTO> getAllUsers() throws SQLException {
+        ResultSet rst = CrudUtil.execute("select * from user");
+
+        ArrayList<UserDTO> userDTOS = new ArrayList<>();
+
+        while (rst.next()) {
+            UserDTO userDTO = new UserDTO(
+                    rst.getString(1),  // Customer ID
+                    rst.getString(2),  // Name
+                    rst.getString(3),  // NIC
+                    rst.getString(4),  // Email
+                    rst.getString(5)   // Phone
+            );
+            userDTOS.add(userDTO);
+        }
+        return userDTOS;
+    }
+
     public UserDTO findById(String selectedUserId) throws SQLException {
         ResultSet rst = CrudUtil.execute("select * from user where userId=?", selectedUserId);
 
@@ -55,5 +78,15 @@ public class UserModel {
             );
         }
         return null;
+    }
+    public ArrayList<String> getAllUserIds() throws SQLException {
+        ResultSet rst = CrudUtil.execute("select userId from user");
+
+        ArrayList<String> userIds = new ArrayList<>();
+
+        while (rst.next()) {
+            userIds.add(rst.getString(1));
+        }
+        return userIds;
     }
 }

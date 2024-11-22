@@ -68,7 +68,7 @@ public class DashboardController implements Initializable {
 
     @FXML
     void NavigateToBrandPage(ActionEvent event) {
-
+        navigateTo("/view/BrandForm.fxml");
     }
 
     @FXML

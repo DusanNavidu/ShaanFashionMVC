@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXPasswordField?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.gdse72.shaanfashion.controller.ValidationController">
+   <children>
+      <Label alignment="CENTER" layoutX="195.0" layoutY="39.0" prefHeight="17.0" prefWidth="600.0" text="Forgot Password" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="10.0">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <Label layoutX="77.0" layoutY="126.0" prefHeight="17.0" prefWidth="122.0" text="New password" AnchorPane.leftAnchor="25.0" AnchorPane.topAnchor="100.0">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="77.0" layoutY="234.0" prefHeight="27.0" prefWidth="158.0" text="Confirm password" AnchorPane.leftAnchor="25.0" AnchorPane.topAnchor="200.0">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <JFXPasswordField fx:id="txtConfirmPassword" layoutX="36.0" layoutY="292.0" prefHeight="39.0" prefWidth="550.0" AnchorPane.leftAnchor="25.0" AnchorPane.topAnchor="240.0">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </JFXPasswordField>
+      <JFXPasswordField fx:id="txtNewPassword" layoutX="28.0" layoutY="141.0" prefHeight="39.0" prefWidth="550.0" AnchorPane.leftAnchor="25.0" AnchorPane.topAnchor="135.0">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </JFXPasswordField>
+      <Button fx:id="btnOk" layoutX="450.0" layoutY="318.0" mnemonicParsing="false" onAction="#btnOkOnAction" prefHeight="56.0" prefWidth="103.0" text="OK">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>

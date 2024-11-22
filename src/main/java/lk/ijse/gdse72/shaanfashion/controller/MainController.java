@@ -31,14 +31,16 @@ public class MainController {
     }
 
     @FXML
-    void btnManagerOnAction(ActionEvent event) {
-
+    void btnManagerOnAction(ActionEvent event) throws IOException {
+        mainPage.getChildren().clear();
+        AnchorPane load = FXMLLoader.load(getClass().getResource("/view/LoginForm.fxml"));
+        mainPage.getChildren().add(load);
     }
 
     @FXML
     void btnOwnerOnAction(ActionEvent event) throws IOException {
         mainPage.getChildren().clear();
-        AnchorPane load = FXMLLoader.load(getClass().getResource("/view/OwnerLoginForm.fxml"));
+        AnchorPane load = FXMLLoader.load(getClass().getResource("/view/LoginForm.fxml"));
         mainPage.getChildren().add(load);
     }
 

@@ -20,7 +20,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
 
-public class CashierDashboardController implements Initializable {
+public class ManagerDashboardController implements Initializable {
 
     @FXML
     private JFXButton btnBrand;
@@ -38,6 +38,9 @@ public class CashierDashboardController implements Initializable {
     private JFXButton btnItem;
 
     @FXML
+    private JFXButton btnItemAvailability;
+
+    @FXML
     private JFXButton btnLogOut;
 
     @FXML
@@ -50,30 +53,32 @@ public class CashierDashboardController implements Initializable {
     private JFXButton btnSupplier;
 
     @FXML
-    private JFXButton btnItemAvailability;
+    private AnchorPane managerPage;
 
     @FXML
-    private AnchorPane cashierDashboardPage;
-
-    @FXML
-    private AnchorPane dashBoardCashierLoadingTablePage;
+    private AnchorPane dashBoardManagerLoadingTablePage;
 
     @FXML
     private Label lblDateTime;
 
     @FXML
     void NavigateTOItemPage(ActionEvent event) {
-
+        navigateTo("/view/ItemForm.fxml");
     }
 
     @FXML
     void NavigateToBrandPage(ActionEvent event) {
-
+        navigateTo("/view/BrandForm.fxml");
     }
 
     @FXML
     void NavigateToCategory(ActionEvent event) {
+        navigateTo("/view/CategoryForm.fxml");
+    }
 
+    @FXML
+    void NavigateToItemAvailabilityPage(ActionEvent event) {
+        navigateTo("/view/ItemAvailabilityForm.fxml");
     }
 
     @FXML
@@ -83,21 +88,11 @@ public class CashierDashboardController implements Initializable {
 
     @FXML
     void NavigateToOrderReturnPage(ActionEvent event) {
-
+        navigateTo("/view/OrderReturnForm.fxml");
     }
 
     @FXML
     void NavigateToSupplierPage(ActionEvent event) {
-
-    }
-
-    @FXML
-    void btnCustomerOnAction(ActionEvent event) {
-        navigateTo("/view/CustomerForm.fxml");
-    }
-
-    @FXML
-    void NavigateToItemAvailabilityPage(ActionEvent event) {
 
     }
 
@@ -112,17 +107,9 @@ public class CashierDashboardController implements Initializable {
         }
     }
 
-    private void navigateTo(String fxmlPath) {
-        try {
-            dashBoardCashierLoadingTablePage.getChildren().clear();
-            AnchorPane load = FXMLLoader.load(getClass().getResource(fxmlPath));
-            load.prefWidthProperty().bind(dashBoardCashierLoadingTablePage.widthProperty());
-            load.prefHeightProperty().bind(dashBoardCashierLoadingTablePage.heightProperty());
-            dashBoardCashierLoadingTablePage.getChildren().add(load);
-        }catch (IOException e) {
-            e.printStackTrace();
-            new Alert(Alert.AlertType.ERROR, "Fail to load page!").show();
-        }
+    @FXML
+    void btnCustomerOnAction(ActionEvent event) {
+        navigateTo("/view/CustomerForm.fxml");
     }
 
     @Override
@@ -145,23 +132,34 @@ public class CashierDashboardController implements Initializable {
         lblDateTime.setText(now.format(formatter));
     }
 
+    @FXML
+    void btnLogOutOnAcion(ActionEvent event) throws IOException {
+        managerPage.getChildren().clear();
+        AnchorPane load = FXMLLoader.load(getClass().getResource("/view/MainForm.fxml"));
+        managerPage.getChildren().add(load);
+    }
+    private void navigateTo(String fxmlPath) {
+        try {
+            dashBoardManagerLoadingTablePage.getChildren().clear();
+            AnchorPane load = FXMLLoader.load(getClass().getResource(fxmlPath));
+            load.prefWidthProperty().bind(dashBoardManagerLoadingTablePage.widthProperty());
+            load.prefHeightProperty().bind(dashBoardManagerLoadingTablePage.heightProperty());
+            dashBoardManagerLoadingTablePage.getChildren().add(load);
+        }catch (IOException e) {
+            e.printStackTrace();
+            new Alert(Alert.AlertType.ERROR, "Fail to load page!").show();
+        }
+    }
     private void disableButtons() {
-        btnBrand.setDisable(true);
-        btnCategory.setDisable(true);
-        btnItem.setDisable(true);
+        btnBrand.setDisable(false);
+        btnCategory.setDisable(false);
+        btnItem.setDisable(false);
         btnOrder.setDisable(false);
-        btnOrderReturn.setDisable(true);
+        btnOrderReturn.setDisable(false);
         btnSupplier.setDisable(true);
 
         btnLogOut.setDisable(false);
         btnCustomer.setDisable(false);
         btnItemAvailability.setDisable(false);
-    }
-
-    @FXML
-    void btnLogOutOnAcion(ActionEvent event) throws IOException {
-        cashierDashboardPage.getChildren().clear();
-        AnchorPane load = FXMLLoader.load(getClass().getResource("/view/MainForm.fxml"));
-        cashierDashboardPage.getChildren().add(load);
     }
 }

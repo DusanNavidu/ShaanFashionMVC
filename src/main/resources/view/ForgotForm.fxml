@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #e6eeff;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.gdse72.shaanfashion.controller.ForgotController">
+   <children>
+      <Label alignment="CENTER" layoutY="14.0" prefHeight="60.0" prefWidth="600.0" text="FORGOT PASSWORD" textFill="#cf1919" underline="true" AnchorPane.topAnchor="0.0">
+         <font>
+            <Font name="Bodoni MT Bold" size="36.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtPin" alignment="CENTER" layoutX="206.0" layoutY="143.0" prefHeight="150.0" prefWidth="200.0" style="-fx-border-color: black; -fx-background-radius: 10; -fx-border-radius: 10;" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="200.0">
+         <font>
+            <Font size="72.0" />
+         </font>
+      </TextField>
+      <JFXButton fx:id="btnOk" buttonType="RAISED" layoutX="226.0" layoutY="306.0" onAction="#btnOkOnAction" prefHeight="40.0" prefWidth="100.0" style="-fx-background-color: #ff6600; -fx-border-color: black; -fx-background-radius: 30; -fx-border-radius: 30;" text="OK" AnchorPane.leftAnchor="250.0" AnchorPane.rightAnchor="250.0">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </JFXButton>
+      <Label alignment="CENTER" layoutX="172.0" layoutY="115.0" prefHeight="30.0" prefWidth="600.0" text="Enter the pin number you received" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="110.0">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblNotify" alignment="CENTER" layoutX="165.0" layoutY="369.0" prefHeight="30.0" prefWidth="600.0" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="0.0">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

@@ -6,6 +6,7 @@ module lk.ijse.gdse72.shaanfashion {
     requires com.jfoenix;
     requires javafx.controls;
     requires java.mail;
+    requires net.sf.jasperreports.core;
     //requires com.google.zxing;
 
     opens lk.ijse.gdse72.shaanfashion.dto.tm to javafx.base;

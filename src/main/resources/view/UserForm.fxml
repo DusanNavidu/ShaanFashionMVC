@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.gdse72.shaanfashion.controller.UserController">
+   <children>
+      <TableView fx:id="tblUser" layoutX="50.0" layoutY="29.0" prefHeight="495.0" prefWidth="700.0">
+        <columns>
+          <TableColumn fx:id="colUserId" prefWidth="75.0" text="User ID" />
+          <TableColumn fx:id="colFullName" prefWidth="182.0" text="User Full Name" />
+            <TableColumn fx:id="colUsername" prefWidth="150.0" text="useranme" />
+            <TableColumn fx:id="colEmail" prefWidth="133.0" text="Email" />
+            <TableColumn fx:id="colPassword" prefWidth="159.0" text="password" />
+        </columns>
+      </TableView>
+   </children>
+</AnchorPane>

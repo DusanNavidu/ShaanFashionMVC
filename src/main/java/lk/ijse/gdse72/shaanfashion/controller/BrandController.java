@@ -7,10 +7,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import lk.ijse.gdse72.shaanfashion.dto.BrandDTO;
@@ -20,6 +17,7 @@ import lk.ijse.gdse72.shaanfashion.model.BrandModel;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class BrandController implements Initializable {
@@ -116,13 +114,29 @@ public class BrandController implements Initializable {
     }
 
     @FXML
-    void btnDeleteOnAction(ActionEvent event) {
+    void btnDeleteOnAction(ActionEvent event) throws SQLException {
+        String brandId = lblBrandId.getText();
 
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Are you sure you want to delete this brand?", ButtonType.YES, ButtonType.NO);
+        Optional<ButtonType> buttonType = alert.showAndWait();
+        if (buttonType.get() == ButtonType.YES) {
+
+            boolean isDeleted = brandModel.deleteBrand(brandId);
+
+            if (isDeleted) {
+                new Alert(Alert.AlertType.INFORMATION, "brand delete...!").show();
+                lblNotify.setText("brand successfully delete!");
+                refreshPage();
+            } else {
+                new Alert(Alert.AlertType.ERROR, "Fail to delete brand...!").show();
+                lblNotify.setText("Failed to delete brand.");
+            }
+        }
     }
 
     @FXML
-    void btnResertOnAction(ActionEvent event) {
-
+    void btnResertOnAction(ActionEvent event) throws SQLException {
+        refreshPage();
     }
 
     @FXML

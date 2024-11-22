@@ -21,4 +21,8 @@ public class PasswordUtil {
             throw new RuntimeException(e);
         }
     }
+
+    public static boolean checkPassword(String password, String storedHash) {
+        return hashPassword(password).equals(storedHash);
+    }
 }

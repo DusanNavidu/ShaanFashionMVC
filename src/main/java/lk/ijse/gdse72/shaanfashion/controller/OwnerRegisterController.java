@@ -10,7 +10,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import lk.ijse.gdse72.shaanfashion.dto.tm.UserDTO;
 import lk.ijse.gdse72.shaanfashion.model.UserModel;
@@ -72,7 +71,7 @@ public class OwnerRegisterController implements Initializable {
     @FXML
     void btnBackOnAction(ActionEvent event) throws IOException {
         OwnerRegisterPage.getChildren().clear();
-        AnchorPane load = FXMLLoader.load(getClass().getResource("/view/OwnerLoginForm.fxml"));
+        AnchorPane load = FXMLLoader.load(getClass().getResource("/view/LoginForm.fxml"));
         OwnerRegisterPage.getChildren().add(load);
     }
 
@@ -132,7 +131,7 @@ public class OwnerRegisterController implements Initializable {
     @FXML
     void fxBtnSigninOnAction(ActionEvent event) throws IOException, SQLException {
         OwnerRegisterPage.getChildren().clear();
-        AnchorPane load = FXMLLoader.load(getClass().getResource("/view/OwnerLoginForm.fxml"));
+        AnchorPane load = FXMLLoader.load(getClass().getResource("/view/LoginForm.fxml"));
         OwnerRegisterPage.getChildren().add(load);
     }
 }
